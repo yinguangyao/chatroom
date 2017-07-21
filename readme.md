@@ -43,8 +43,7 @@ var listen = {
 	publish: function() {
 		var args = [].slice.call(arguments);
 		var event = args.shift(), list;
-		if(!this._callback) return this;
-		if(!(list = this._callback[event])) return this;
+		if(!this.callback || !(list = this._callback[event])) return this;
 		for(var i = 0, length = list.length; i < length; i++) {
 			list[i].apply(this, args);
 		}
